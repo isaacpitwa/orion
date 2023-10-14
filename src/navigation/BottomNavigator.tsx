@@ -10,6 +10,7 @@ export default function MyTabs() {
       initialRouteName="Post"
       screenOptions={{
         tabBarActiveTintColor: '#e91e63',
+        headerShown: false,
       }}>
       <BottomTab.Screen name="Feed" component={bottomScreens.Feeds} />
       <BottomTab.Screen name="Post" component={bottomScreens.AddPost} />
