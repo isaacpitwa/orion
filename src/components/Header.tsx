@@ -1,8 +1,17 @@
 import React from 'react';
 import {StyleSheet, View, Image} from 'react-native';
 import IconButton from './IconButton';
+type IHeaderProps = {
+  onAddImage: () => void;
+  onSelectFeedCategory: () => void;
+  onSelectLocation: () => void;
+};
 
-function Header() {
+function Header({
+  onAddImage,
+  onSelectFeedCategory,
+  onSelectLocation,
+}: IHeaderProps) {
   return (
     <View style={styles.container}>
       <Image
@@ -12,9 +21,9 @@ function Header() {
         }}
       />
       <View style={styles.navMenu}>
-        <IconButton icon="camera" />
-        <IconButton icon="location" />
-        <IconButton icon="list" />
+        <IconButton icon="camera" onPress={onAddImage} />
+        <IconButton icon="location" onPress={onSelectLocation} />
+        <IconButton icon="list" onPress={onSelectFeedCategory} />
       </View>
       <IconButton icon="rocket" />
     </View>
@@ -40,6 +49,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 50,
     marginRight: 32,
+    backgroundColor: '#f4f4f4',
   },
 });
 

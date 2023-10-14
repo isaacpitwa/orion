@@ -3,6 +3,7 @@ import {screens as bottomScreens} from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import IonicIcons from 'react-native-vector-icons/Ionicons';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -11,7 +12,6 @@ export default function MyTabs() {
     <BottomTab.Navigator
       initialRouteName="Post"
       screenOptions={{
-        tabBarActiveTintColor: '#e91e63',
         headerShown: false,
       }}>
       <BottomTab.Screen
@@ -30,7 +30,7 @@ export default function MyTabs() {
         options={{
           tabBarLabel: 'Post',
           tabBarIcon: ({color, size}) => (
-            <MaterialIcon name="add-circle" color={color} size={size} />
+            <IonicIcons name="add-circle-outline" color={color} size={size} />
           ),
         }}
       />

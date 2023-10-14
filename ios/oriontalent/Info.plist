@@ -70,5 +70,9 @@
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Select image/video from photos	</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Take a photo/video</string>
 </dict>
 </plist>
