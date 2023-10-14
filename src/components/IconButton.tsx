@@ -1,7 +1,7 @@
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-export default function IconButton({icon = 'calendar-plus-o'}) {
+export default function IconButton({icon = 'universal-access'}) {
   return (
     <TouchableOpacity style={styles.container}>
       <FontAwesome name={icon} size={20} color={'#D8D8D8'} />
