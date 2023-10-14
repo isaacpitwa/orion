@@ -6,7 +6,12 @@ import {
   launchImageLibrary,
 } from 'react-native-image-picker';
 import {useToast} from 'react-native-toast-notifications';
-function ImageInput() {
+
+type IImageInputProps = {
+  setImageSelected: (image: any) => void;
+};
+
+function ImageInput({setImageSelected}: IImageInputProps) {
   const [filePath, setFilePath] = useState<ImagePickerResponse>({});
   const toast = useToast();
 
@@ -24,6 +29,9 @@ function ImageInput() {
         } else {
           let source = response;
           setFilePath(source);
+          if (source?.assets) {
+            setImageSelected(source.assets[0]);
+          }
         }
       },
     );

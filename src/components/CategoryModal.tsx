@@ -5,11 +5,13 @@ import {CONSTANTS} from '../utils/Constants';
 type ICategoryModalProps = {
   modalVisible: boolean;
   setModalVisible: (value: boolean) => void;
+  setCategory: (value: any) => void;
 };
 
 const CategoryModal = ({
   modalVisible,
   setModalVisible,
+  setCategory,
 }: ICategoryModalProps) => {
   return (
     <View>
@@ -28,7 +30,10 @@ const CategoryModal = ({
               <Pressable
                 key={item.id}
                 style={[styles.categoryButton]}
-                onPress={() => setModalVisible(!modalVisible)}>
+                onPress={() => {
+                  setModalVisible(!modalVisible);
+                  setCategory(item);
+                }}>
                 <Text style={styles.categoryButtonText}>{item.name}</Text>
               </Pressable>
             ))}

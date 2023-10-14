@@ -1,7 +1,15 @@
 import React, {useState} from 'react';
-import {SafeAreaView, StyleSheet, Text, TextInput, View} from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  ScrollView,
+} from 'react-native';
 import {Components} from '../components';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const AddPostScreen = () => {
   const [captionText, setCaptionText] = useState('');
@@ -10,6 +18,7 @@ const AddPostScreen = () => {
   const [locationModalVisible, setLocationModalVisible] = useState(false);
   const [location, setLocation] = useState<any>({});
   const [category, setCategory] = useState<any>({});
+  const [imagesSelected, setImagesSelected] = useState<any>([]);
 
   return (
     <View style={styles.container}>
@@ -32,13 +41,22 @@ const AddPostScreen = () => {
           <Text style={styles.captionLength}>{captionText.length}/50</Text>
         </View>
         <View style={styles.ImageList}>
-          {imageList.map((item: any) => (
-            <Components.ImageInput key={item.id} />
-          ))}
+          <ScrollView horizontal={true}>
+            {imageList.map((image: any) => (
+              <Components.ImageInput
+                key={image.id}
+                setImageSelected={image => {
+                  setImagesSelected([...imagesSelected, image]);
+                  setImageList([...imageList, {id: imageList.length + 1}]);
+                }}
+              />
+            ))}
+          </ScrollView>
         </View>
         <Components.CategoryModal
           modalVisible={categoryModalVisible}
           setModalVisible={setCategoryModalVisible}
+          setCategory={setCategory}
         />
         <Components.LocationModal
           modalVisible={locationModalVisible}
@@ -46,10 +64,17 @@ const AddPostScreen = () => {
           setLocation={setLocation}
         />
         <View style={styles.selectionList}>
-          {location && (
+          {location.label && (
             <View style={styles.selectionBtn}>
               <Ionicons name="location" size={16} />
               <Text style={styles.selectionText}>{location.label}</Text>
+              <Ionicons name="close" size={18} />
+            </View>
+          )}
+          {category.name && (
+            <View style={styles.selectionBtn}>
+              <MaterialIcons name="numbers" size={16} />
+              <Text style={styles.selectionText}>{category.name}</Text>
               <Ionicons name="close" size={18} />
             </View>
           )}
@@ -95,6 +120,7 @@ const styles = StyleSheet.create({
     width: '36%',
     gap: 4,
     borderRadius: 20,
+    marginTop: 8,
   },
 });
 
