@@ -12,11 +12,11 @@ function Header() {
         }}
       />
       <View style={styles.navMenu}>
-        <IconButton />
-        <IconButton />
-        <IconButton />
+        <IconButton icon="camera" />
+        <IconButton icon="location" />
+        <IconButton icon="list" />
       </View>
-      <IconButton />
+      <IconButton icon="rocket" />
     </View>
   );
 }

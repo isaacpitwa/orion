@@ -1,10 +1,11 @@
+import React from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export default function IconButton({icon = 'universal-access'}) {
+export default function IconButton({icon = 'list', onPress = () => {}}) {
   return (
-    <TouchableOpacity style={styles.container}>
-      <FontAwesome name={icon} size={20} color={'#D8D8D8'} />
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <Ionicons name={icon} size={28} color={'#343434'} />
     </TouchableOpacity>
   );
 }
