@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
 import {SafeAreaView, StyleSheet, Text, TextInput, View} from 'react-native';
 import {Components} from '../components';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const AddPostScreen = () => {
   const [captionText, setCaptionText] = useState('');
   const [imageList, setImageList] = useState<any>([]);
   const [categoryModalVisible, setCategoryModalVisible] = useState(false);
   const [locationModalVisible, setLocationModalVisible] = useState(false);
+  const [location, setLocation] = useState<any>({});
+  const [category, setCategory] = useState<any>({});
 
   return (
     <View style={styles.container}>
@@ -40,7 +43,17 @@ const AddPostScreen = () => {
         <Components.LocationModal
           modalVisible={locationModalVisible}
           setModalVisible={setLocationModalVisible}
+          setLocation={setLocation}
         />
+        <View style={styles.selectionList}>
+          {location && (
+            <View style={styles.selectionBtn}>
+              <Ionicons name="location" size={16} />
+              <Text style={styles.selectionText}>{location.label}</Text>
+              <Ionicons name="close" size={18} />
+            </View>
+          )}
+        </View>
       </SafeAreaView>
     </View>
   );
@@ -63,6 +76,25 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     padding: 20,
+  },
+  selectionList: {
+    padding: 20,
+  },
+  selectionText: {
+    color: '#7E7D7E',
+    fontSize: 12,
+  },
+  selectionBtn: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 8,
+    paddingVertical: 4,
+    borderWidth: 1,
+    borderColor: '#7E7D7E',
+    width: '36%',
+    gap: 4,
+    borderRadius: 20,
   },
 });
 

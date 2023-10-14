@@ -9,14 +9,17 @@ import {
   View,
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {CONSTANTS} from '../utils/Constants';
 type ILocationModalModalProps = {
   modalVisible: boolean;
   setModalVisible: (value: boolean) => void;
+  setLocation: (value: string) => void;
 };
 
 const LocationModal = ({
   modalVisible,
   setModalVisible,
+  setLocation,
 }: ILocationModalModalProps) => {
   return (
     <View>
@@ -46,6 +49,19 @@ const LocationModal = ({
                 style={styles.input}
                 underlineColorAndroid="transparent"
               />
+            </View>
+            <View style={styles.locationList}>
+              {CONSTANTS.LOCATIONS.map((location: any) => (
+                <Pressable
+                  key={location.id}
+                  style={styles.location}
+                  onPress={() => {
+                    setModalVisible(!modalVisible);
+                    setLocation(location);
+                  }}>
+                  <Text style={styles.locationText}>{location.label}</Text>
+                </Pressable>
+              ))}
             </View>
           </View>
         </View>
@@ -115,6 +131,18 @@ const styles = StyleSheet.create({
   searchIcon: {
     padding: 10,
     color: '#000',
+  },
+  location: {
+    color: '79787A',
+    textAlign: 'left',
+    marginTop: 14,
+  },
+  locationText: {
+    color: '79787A',
+  },
+  locationList: {
+    marginTop: 16,
+    width: '100%',
   },
 });
 export default LocationModal;

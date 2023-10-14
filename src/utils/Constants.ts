@@ -13,4 +13,23 @@ const FEED_CATEGORIES = [
   },
 ];
 
-export const CONSTANTS = {FEED_CATEGORIES};
+const LOCATIONS = [
+  {
+    id: 1,
+    label: 'Melbourne',
+  },
+  {
+    id: 2,
+    label: 'Sydney',
+  },
+  {
+    id: 3,
+    label: 'Brisbane',
+  },
+  {
+    id: 4,
+    label: 'Perth',
+  },
+];
+
+export const CONSTANTS = {FEED_CATEGORIES, LOCATIONS};
