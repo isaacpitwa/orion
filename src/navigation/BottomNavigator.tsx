@@ -1,9 +1,7 @@
 import React from 'react';
 import {screens as bottomScreens} from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import IonicIcons from 'react-native-vector-icons/Ionicons';
+import {Components} from '../components';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -19,9 +17,7 @@ export default function MyTabs() {
         component={bottomScreens.Feeds}
         options={{
           tabBarLabel: 'Feed',
-          tabBarIcon: ({color, size}) => (
-            <FontAwesomeIcon name="feed" color={color} size={size} />
-          ),
+          tabBarIcon: Components.FeedIcon,
         }}
       />
       <BottomTab.Screen
@@ -29,9 +25,7 @@ export default function MyTabs() {
         component={bottomScreens.AddPost}
         options={{
           tabBarLabel: 'Post',
-          tabBarIcon: ({color, size}) => (
-            <IonicIcons name="add-circle-outline" color={color} size={size} />
-          ),
+          tabBarIcon: Components.AddPostIcon,
         }}
       />
       <BottomTab.Screen
@@ -39,9 +33,7 @@ export default function MyTabs() {
         component={bottomScreens.Account}
         options={{
           tabBarLabel: 'Account',
-          tabBarIcon: ({color, size}) => (
-            <MaterialIcon name="account" color={color} size={size} />
-          ),
+          tabBarIcon: Components.AccountIcon,
         }}
       />
     </BottomTab.Navigator>
