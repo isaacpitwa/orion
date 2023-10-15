@@ -6,12 +6,14 @@ import {
   TextInput,
   View,
   ScrollView,
+  Pressable,
 } from 'react-native';
 import {Components} from '../components';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useToast} from 'react-native-toast-notifications';
 import {addPost} from '../api/post';
+import {PostCategory} from '../types/post';
 
 const AddPostScreen = () => {
   const [captionText, setCaptionText] = useState('');
@@ -19,29 +21,33 @@ const AddPostScreen = () => {
   const [categoryModalVisible, setCategoryModalVisible] = useState(false);
   const [locationModalVisible, setLocationModalVisible] = useState(false);
   const [location, setLocation] = useState<any>({});
-  const [category, setCategory] = useState<any>({});
+  const [category, setCategory] = useState<Array<PostCategory>>([]);
   const [imagesSelected, setImagesSelected] = useState<any>([]);
   const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
 
   const submit = async () => {
-    // TODO: Data Validations.
-    setIsLoading(true);
-    const apiResponse = await addPost({
-      caption: captionText,
-      images: imagesSelected,
-      location: location,
-      category: category,
-    });
-    if (apiResponse?.success) {
-      toast.show('Yay! Your has been post created!');
-    } else {
-      toast.show('Oops! Something went wrong.', {
-        type: 'danger',
+    // TODO: Add more Data Validations.
+    if (captionText.length > 3) {
+      setIsLoading(true);
+      const apiResponse = await addPost({
+        caption: captionText,
+        images: imagesSelected,
+        location,
+        category,
       });
+      if (apiResponse?.success) {
+        toast.show('Yay! Your has been post created!');
+      } else {
+        toast.show('Oops! Something went wrong.', {
+          type: 'danger',
+        });
+      }
+      setIsLoading(false);
+      reset();
+    } else {
+      toast.show('Caption must be at least 4 characters long.');
     }
-    setIsLoading(false);
-    reset();
   };
 
   //   Resets form for another entry
@@ -49,7 +55,7 @@ const AddPostScreen = () => {
     setCaptionText('');
     setImageList([]);
     setLocation({});
-    setCategory({});
+    setCategory([]);
     setImagesSelected([]);
   };
 
@@ -93,6 +99,7 @@ const AddPostScreen = () => {
           modalVisible={categoryModalVisible}
           setModalVisible={setCategoryModalVisible}
           setCategory={setCategory}
+          category={category}
         />
         <Components.LocationModal
           modalVisible={locationModalVisible}
@@ -107,13 +114,20 @@ const AddPostScreen = () => {
               <Ionicons name="close" size={18} />
             </View>
           )}
-          {category.name && (
-            <View style={styles.selectionBtn}>
-              <MaterialIcons name="numbers" size={16} />
-              <Text style={styles.selectionText}>{category.name}</Text>
-              <Ionicons name="close" size={18} />
-            </View>
-          )}
+          {category.length > 0 &&
+            category.map(item => (
+              <View style={styles.selectionBtn} key={item.id}>
+                <MaterialIcons name="numbers" size={16} />
+                <Text style={styles.selectionText}>{item.name}</Text>
+                <Pressable
+                  onPress={() => {
+                    const newCat = category.filter(cat => cat.id !== item.id);
+                    setCategory([...newCat]);
+                  }}>
+                  <Ionicons name="close" size={18} />
+                </Pressable>
+              </View>
+            ))}
         </View>
       </SafeAreaView>
     </View>

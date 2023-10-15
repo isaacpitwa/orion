@@ -1,79 +1,114 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Orion Talent React Native Project
 
-# Getting Started
+Welcome to the Orion Talent React Native project! This project is set up with various dependencies and scripts to help you get started with building a mobile app. This README file will guide you through the steps required to run the project locally on your development machine.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Prerequisites
 
-## Step 1: Start the Metro Server
+Before you start, make sure you have the following software installed on your machine:
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+- Node.js (>=16)
+- Yarn or npm (Yarn is recommended)
+- React Native CLI
+- Xcode and Android Studio (if you plan to run the app on iOS and Android simulators/emulators)
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Installation
 
-```bash
-# using npm
-npm start
+1. **Clone the Repository:**
 
-# OR using Yarn
-yarn start
-```
+   ```bash
+   git clone <repository-url>
+   cd oriontalent
+   ```
 
-## Step 2: Start your Application
+2. **Install Dependencies:**
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+   Use Yarn or npm to install the project dependencies by running the following command:
 
-### For Android
+   ```bash
+   yarn install
+   # or
+   npm install
+   ```
 
-```bash
-# using npm
-npm run android
+## Running the App
 
-# OR using Yarn
-yarn android
-```
+You can run the app on both iOS and Android simulators/emulators or on physical devices. Make sure you have the necessary simulators/emulators set up or a device connected to your development machine.
 
-### For iOS
+### iOS
 
-```bash
-# using npm
-npm run ios
+To run the app on an iOS simulator or device:
 
-# OR using Yarn
-yarn ios
-```
+1. Navigate to the project directory.
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+2. Start the Metro Bundler:
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+   ```bash
+   yarn start
+   # or
+   npm start
+   ```
 
-## Step 3: Modifying your App
+3. In a separate terminal, run the following command to launch the app on the iOS simulator:
 
-Now that you have successfully run the app, let's modify it.
+   ```bash
+   yarn ios
+   # or
+   npm run ios
+   ```
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+### Android
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+To run the app on an Android emulator or device:
 
-## Congratulations! :tada:
+1. Navigate to the project directory.
 
-You've successfully run and modified your React Native App. :partying_face:
+2. Start the Metro Bundler:
 
-### Now what?
+   ```bash
+   yarn start
+   # or
+   npm start
+   ```
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+3. In a separate terminal, run the following command to launch the app on the Android emulator:
 
-# Troubleshooting
+   ```bash
+   yarn android
+   # or
+   npm run android
+   ```
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+## Additional Scripts
 
-# Learn More
+- `yarn lint` or `npm run lint`: Run ESLint to check and fix code style issues.
+- `yarn test` or `npm test`: Run Jest for running tests.
+- `yarn start` or `npm start`: Start the Metro Bundler.
+- Other scripts mentioned in the `package.json` file can also be executed as needed.
 
-To learn more about React Native, take a look at the following resources:
+## Folder Structure
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Here's an overview of the project structure for the Orion Talent React Native app:
+
+- `src/` - Source files
+  - `components/` - Reusable app components
+  - `screens/` - Application screens
+  - `api/` - API integrations
+  - `util/` - Application utility files
+
+- `ios/` - iOS platform-specific code
+  - Contains configurations and native code for iOS.
+
+- `android/` - Android platform-specific code
+  - Contains configurations and native code for Android.
+
+- Your source code can be found in the project root, particularly in the `src` directory.
+- Configuration files are typically located in the project root as well.
+
+
+## Troubleshooting
+
+If you encounter any issues while setting up or running the project, please refer to the documentation of the specific libraries and tools you are using. Additionally, feel free to reach out to the project maintainers or the community for assistance.
+
+Happy coding!
+
+

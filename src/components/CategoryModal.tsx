@@ -6,12 +6,14 @@ type ICategoryModalProps = {
   modalVisible: boolean;
   setModalVisible: (value: boolean) => void;
   setCategory: (value: any) => void;
+  category: Array<any>;
 };
 
 const CategoryModal = ({
   modalVisible,
   setModalVisible,
   setCategory,
+  category,
 }: ICategoryModalProps) => {
   return (
     <View>
@@ -28,10 +30,15 @@ const CategoryModal = ({
             {CONSTANTS.FEED_CATEGORIES.map((item: any) => (
               <Pressable
                 key={item.id}
-                style={[styles.categoryButton]}
+                style={
+                  category.includes(item)
+                    ? [styles.categoryButton, styles.categorySelected]
+                    : styles.categoryButton
+                }
                 onPress={() => {
-                  setModalVisible(!modalVisible);
-                  setCategory(item);
+                  if (!category.includes(item)) {
+                    setCategory([...category, item]);
+                  }
                 }}>
                 <Text style={styles.categoryButtonText}>{item.name}</Text>
               </Pressable>
@@ -103,6 +110,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 10,
     // flexWrap: 'wrap',
+  },
+  categorySelected: {
+    borderWidth: 0,
+    color: '#fff',
   },
 });
 export default CategoryModal;

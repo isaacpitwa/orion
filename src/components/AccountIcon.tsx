@@ -1,5 +1,5 @@
 import React from 'react';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 type IIconType = {
   color: string;
