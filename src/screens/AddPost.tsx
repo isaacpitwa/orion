@@ -11,6 +11,7 @@ import {Components} from '../components';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useToast} from 'react-native-toast-notifications';
+import {addPost} from '../api/post';
 
 const AddPostScreen = () => {
   const [captionText, setCaptionText] = useState('');
@@ -23,14 +24,19 @@ const AddPostScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
 
-  const submit = () => {
+  const submit = async () => {
     // TODO: Data Validations.
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
+    const apiResponse = await addPost({});
+    if (apiResponse?.success) {
       toast.show('Yay! Your has been post created!');
-      reset();
-    }, 3000);
+    } else {
+      toast.show('Oops! Something went wrong.', {
+        type: 'danger',
+      });
+    }
+    setIsLoading(false);
+    reset();
   };
 
   //   Resets form for another entry
