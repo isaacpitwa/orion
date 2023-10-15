@@ -133,12 +133,12 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   location: {
-    color: '79787A',
+    color: '#79787A',
     textAlign: 'left',
     marginTop: 14,
   },
   locationText: {
-    color: '79787A',
+    color: '#79787A',
   },
   locationList: {
     marginTop: 16,

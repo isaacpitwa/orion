@@ -1,16 +1,20 @@
 import React from 'react';
-import {StyleSheet, View, Image} from 'react-native';
+import {StyleSheet, View, Image, ActivityIndicator} from 'react-native';
 import IconButton from './IconButton';
 type IHeaderProps = {
   onAddImage: () => void;
   onSelectFeedCategory: () => void;
   onSelectLocation: () => void;
+  isLoading: boolean;
+  submit: () => void;
 };
 
 function Header({
   onAddImage,
   onSelectFeedCategory,
   onSelectLocation,
+  isLoading,
+  submit,
 }: IHeaderProps) {
   return (
     <View style={styles.container}>
@@ -25,7 +29,8 @@ function Header({
         <IconButton icon="location" onPress={onSelectLocation} />
         <IconButton icon="list" onPress={onSelectFeedCategory} />
       </View>
-      <IconButton icon="rocket" />
+      {!isLoading && <IconButton icon="rocket" onPress={submit} />}
+      {isLoading && <ActivityIndicator size="small" />}
     </View>
   );
 }

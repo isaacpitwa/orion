@@ -10,6 +10,7 @@ import {
 import {Components} from '../components';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {useToast} from 'react-native-toast-notifications';
 
 const AddPostScreen = () => {
   const [captionText, setCaptionText] = useState('');
@@ -19,6 +20,27 @@ const AddPostScreen = () => {
   const [location, setLocation] = useState<any>({});
   const [category, setCategory] = useState<any>({});
   const [imagesSelected, setImagesSelected] = useState<any>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const toast = useToast();
+
+  const submit = () => {
+    // TODO: Data Validations.
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      toast.show('Yay! Your has been post created!');
+      reset();
+    }, 3000);
+  };
+
+  //   Resets form for another entry
+  const reset = () => {
+    setCaptionText('');
+    setImageList([]);
+    setLocation({});
+    setCategory({});
+    setImagesSelected([]);
+  };
 
   return (
     <View style={styles.container}>
@@ -29,14 +51,17 @@ const AddPostScreen = () => {
           }}
           onSelectFeedCategory={() => setCategoryModalVisible(true)}
           onSelectLocation={() => setLocationModalVisible(true)}
+          isLoading={isLoading}
+          submit={submit}
         />
         <View style={styles.pageContent}>
           <TextInput
             style={styles.captionInput}
             maxLength={50}
+            value={captionText}
             placeholder="Type here..."
             placeholderTextColor={'#D8D8D8'}
-            onChangeText={value => setCaptionText(value.trim())}
+            onChangeText={value => setCaptionText(value)}
           />
           <Text style={styles.captionLength}>{captionText.length}/50</Text>
         </View>
