@@ -1,3 +1,4 @@
+// Data source for the current Feed Categories list
 const FEED_CATEGORIES = [
   {
     id: 1,
@@ -13,6 +14,7 @@ const FEED_CATEGORIES = [
   },
 ];
 
+// Data source for the current Locations list
 const LOCATIONS = [
   {
     id: 1,

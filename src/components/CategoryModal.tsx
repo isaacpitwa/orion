@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, Modal, Pressable, StyleSheet, Text, View} from 'react-native';
+import {Modal, Pressable, StyleSheet, Text, View} from 'react-native';
 import {CONSTANTS} from '../utils/Constants';
 
 type ICategoryModalProps = {
@@ -20,7 +20,6 @@ const CategoryModal = ({
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
           setModalVisible(!modalVisible);
         }}>
         <View style={styles.modalView}>
