@@ -16,7 +16,7 @@ Before you start, make sure you have the following software installed on your ma
 1. **Clone the Repository:**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/isaacpitwa/orion
    cd oriontalent
    ```
 
