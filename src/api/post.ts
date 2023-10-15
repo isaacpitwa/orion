@@ -1,11 +1,16 @@
+import {Post} from '../types/post';
+
 /**
  * @description Add Post
  * @param {Object} postData Post informatiom to add
  * @returns {Promise}
  */
-export const addPost = async ({}) => {
+export const addPost = async (post: Post) => {
   try {
-    setTimeout(() => {}, 3000);
+    await new Promise(resolve => setTimeout(resolve, 3000));
     return {success: true, data: {}};
-  } catch (error) {}
+  } catch (error) {
+    console.log('Error in addPost', post);
+    return {success: false, data: error};
+  }
 };

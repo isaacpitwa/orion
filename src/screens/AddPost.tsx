@@ -27,7 +27,12 @@ const AddPostScreen = () => {
   const submit = async () => {
     // TODO: Data Validations.
     setIsLoading(true);
-    const apiResponse = await addPost({});
+    const apiResponse = await addPost({
+      caption: captionText,
+      images: imagesSelected,
+      location: location,
+      category: category,
+    });
     if (apiResponse?.success) {
       toast.show('Yay! Your has been post created!');
     } else {
